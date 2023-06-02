@@ -99,7 +99,7 @@ contract crowdfunding{
             claimedAmount: false,
             refundClaimed: new bool[](0)
         }));
-        addressProjectsList[msg.sender].push(projects.length - 1);
+        addressProjectsList[msg.sender].push(projects.length - 1);  // usually it store the project IDs in a corresponding address
     }
 
     // Returns the project metadata of all entries in projects
@@ -127,7 +127,7 @@ contract crowdfunding{
     function getProjectsDetail(uint256[] memory _indexList) external view returns(ProjectMetadata[] memory projectsList) {
         ProjectMetadata[] memory newList = new ProjectMetadata[](_indexList.length);
         for(uint256 index = 0; index < _indexList.length; index++) {
-            if(_indexList[index] < projects.length) {
+            if(_indexList[index] < projects.length) { 
                 uint256 i = _indexList[index]; 
                 newList[index] = ProjectMetadata(
                     projects[i].projectName,
